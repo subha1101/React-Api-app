@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+</head>
+<body>
+<div class="container mt-2">
+    <div class="table-responsive-sm">
+        <div class="mb-3 d-flex justify-content-between">
+            <div>
+                <label for="itemsPerPage">Show items:</label>
+                <select id="itemsPerPage" class="form-control w-auto d-inline" style="display: inline-block;">
+                    <option value="5">5</option>
+                    <option value="10" selected>10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+            <div>
+                <label for="emailSearch">Search:</label>
+                <input type="text" id="emailSearch" class="form-control w-auto d-inline" placeholder="email" style="display: inline-block;">
+            </div>
+        </div>
+
+    
+    <table class="table table-hover table-striped table-dark table-bordered" id="table">
+        <thead>
+            <tr>
+                <th class="text-nowrap">Post ID</th>
+                <th class="text-nowrap">User ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Content</th>
+            </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+</div>
+<ul class="pagination justify-content-center" id="pagination"></ul>
+</div>
+</div>
+
+
+
+<script src="scripts.js"></script>
+</body>
+</html>
