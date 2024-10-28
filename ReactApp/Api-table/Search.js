@@ -5,7 +5,7 @@ const Search = ({ searchVal, handleSearch }) => {
     <div className="mb-3">
       <input  
       id="emailSearch" 
-      class="form-control w-auto d-inline"
+      className="form-control w-auto d-inline"
         type="text"
         className="form-control"
         placeholder="Search"
