@@ -1,21 +1,47 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
+import Search from './Search';
+import Pagination from './Pagination';
 function FetchData({ itemsPerPage, setItemsPerPage }) {
   const [records, setRecords] = useState([]);
+  const [filteredRecords, setFilteredRecords] = useState([]);
+  const [searchVal, setSearchVal] = useState('');
+  const [currentPage, setCurrentPage] = useState(1); 
 
   useEffect(() => {
     axios.get('https://jsonplaceholder.typicode.com/comments')
-      .then(res => setRecords(res.data))
+      .then(res => {
+        setRecords(res.data);
+        setFilteredRecords(res.data);
+      })
       .catch(error => console.error("Error fetching data:", error));
   }, []);
 
-  // Slice the records based on the itemsPerPage state
-  const displayedRecords = records.slice(0, itemsPerPage);
+  const handleSearch = (event) => {
+    const value = event.target.value;
+    setSearchVal(value);
+
+    if (value.trim() === '') {
+      setFilteredRecords(records);
+    } else {
+      const filtered = records.filter((record) =>
+        record.name.toLowerCase().includes(value.toLowerCase()) ||
+        record.email.toLowerCase().includes(value.toLowerCase()) ||
+        record.body.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilteredRecords(filtered);
+    }
+    setCurrentPage(1); 
+  };
+  const indexOfLastRecord = currentPage * itemsPerPage; 
+  const indexOfFirstRecord = indexOfLastRecord - itemsPerPage; 
+  const displayedRecords = filteredRecords.slice(indexOfFirstRecord, indexOfLastRecord); 
+
+  const totalRecords = filteredRecords.length; 
 
   return (
     <div className="table-responsive-sm">
-      <div className="mb-3 d-flex justify-content-between">
+      <div className="mb-3 d-flex justify-content-between align-content-center">
         <div>
           <label htmlFor="itemsPerPage">Show items:</label>
           <select
@@ -31,6 +57,7 @@ function FetchData({ itemsPerPage, setItemsPerPage }) {
             <option value="20">20</option>
           </select>
         </div>
+        <Search searchVal={searchVal} handleSearch={handleSearch} />
       </div>
       
       <table className="table table-hover table-borderless table-primary table-bordered">
@@ -44,8 +71,8 @@ function FetchData({ itemsPerPage, setItemsPerPage }) {
           </tr>
         </thead>
         <tbody>
-          {displayedRecords.map((record, index) => (
-            <tr key={index}>
+          {displayedRecords.map((record) => (
+            <tr key={record.id}>
               <td>{record.postId}</td>
               <td>{record.id}</td>
               <td>{record.name}</td>
@@ -55,6 +82,13 @@ function FetchData({ itemsPerPage, setItemsPerPage }) {
           ))}
         </tbody>
       </table>
+
+      <Pagination 
+        postsPerPage={itemsPerPage}
+        totalPosts={totalRecords}
+        handlePagination={setCurrentPage}
+        currentPage={currentPage}
+      />
     </div>
   );
 }
