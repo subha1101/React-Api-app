@@ -15,7 +15,6 @@ function App() {
 }
 
 export default App;
-<<<<<<< HEAD
 
 
 // import logo from './logo.svg';
@@ -41,5 +40,3 @@ export default App;
 //     </div>
 //   );
 // }
-=======
->>>>>>> 2b05f18eaa6f7657362f0625f5e1cd8415e5622e

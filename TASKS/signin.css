@@ -1,0 +1,87 @@
+.heading_style{
+   background-color: #f8f9fa;
+}
+
+.login_container{
+    display:flex:center; 
+    align-items: center;
+    height: auto; 
+width: auto;
+}
+
+.email_label{
+font-weight: bold;
+font-family:
+border-radius: 11px;
+}
+
+.password_label{
+  font-weight: bold;
+border-radius: 11px;
+}
+
+.forgot_password{
+font-weight: bold;
+color: #495FAD;
+border-radius: 11px;
+
+}
+
+.login_button{
+font-weight: bold;
+border-radius:11px; 
+border:none;
+background-color:#3A5B22!important;
+border-style: none;
+}
+
+.Or_line{
+    height: 2px; 
+    background-color: #b1aaaa;
+
+}
+
+.or_text{
+height: 2px; 
+background-color: #a5a0a0;
+border-style:black;
+}
+
+/* .google_button{
+font-weight: 600;
+ border-style: solid; 
+ border-color: rgb(198, 194, 194) !important;
+ min-width: 25px;
+}
+
+.apple_button{
+font-weight: 600; 
+border-style: solid;
+border-color:rgb(198, 194, 194) !important; 
+min-width: 25px;
+} */
+
+
+
+
+.google_button
+{ font-weight: bold;
+    border-radius: 11px;
+    border:solid;
+    border-color:  rgb(198, 194, 194)!important; /* Define the color and size */
+ }
+ 
+ .apple_button{
+ font-weight: 600; 
+ border-style: solid;
+ border-color:rgb(198, 194, 194) !important;
+
+ } 
+ 
+.image_div{
+    style="height: 100vh;"
+
+}
+.image_class{
+    height: 100%; 
+    width: auto;

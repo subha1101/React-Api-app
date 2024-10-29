@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+<<<<<<< HEAD
 import Search from './Search';
 import Pagination from './Pagination';
 function FetchData({ itemsPerPage, setItemsPerPage }) {
@@ -42,6 +43,24 @@ function FetchData({ itemsPerPage, setItemsPerPage }) {
   return (
     <div className="table-responsive-sm">
       <div className="mb-3 d-flex justify-content-between align-content-center">
+=======
+
+function FetchData({ itemsPerPage, setItemsPerPage }) {
+  const [records, setRecords] = useState([]);
+
+  useEffect(() => {
+    axios.get('https://jsonplaceholder.typicode.com/comments')
+      .then(res => setRecords(res.data))
+      .catch(error => console.error("Error fetching data:", error));
+  }, []);
+
+  // Slice the records based on the itemsPerPage state
+  const displayedRecords = records.slice(0, itemsPerPage);
+
+  return (
+    <div className="table-responsive-sm">
+      <div className="mb-3 d-flex justify-content-between">
+>>>>>>> 2b05f18eaa6f7657362f0625f5e1cd8415e5622e
         <div>
           <label htmlFor="itemsPerPage">Show items:</label>
           <select
@@ -57,7 +76,10 @@ function FetchData({ itemsPerPage, setItemsPerPage }) {
             <option value="20">20</option>
           </select>
         </div>
+<<<<<<< HEAD
         <Search searchVal={searchVal} handleSearch={handleSearch} />
+=======
+>>>>>>> 2b05f18eaa6f7657362f0625f5e1cd8415e5622e
       </div>
       
       <table className="table table-hover table-borderless table-primary table-bordered">
@@ -71,8 +93,13 @@ function FetchData({ itemsPerPage, setItemsPerPage }) {
           </tr>
         </thead>
         <tbody>
+<<<<<<< HEAD
           {displayedRecords.map((record) => (
             <tr key={record.id}>
+=======
+          {displayedRecords.map((record, index) => (
+            <tr key={index}>
+>>>>>>> 2b05f18eaa6f7657362f0625f5e1cd8415e5622e
               <td>{record.postId}</td>
               <td>{record.id}</td>
               <td>{record.name}</td>
@@ -82,6 +109,7 @@ function FetchData({ itemsPerPage, setItemsPerPage }) {
           ))}
         </tbody>
       </table>
+<<<<<<< HEAD
 
       <Pagination 
         postsPerPage={itemsPerPage}
@@ -89,11 +117,14 @@ function FetchData({ itemsPerPage, setItemsPerPage }) {
         handlePagination={setCurrentPage}
         currentPage={currentPage}
       />
+=======
+>>>>>>> 2b05f18eaa6f7657362f0625f5e1cd8415e5622e
     </div>
   );
 }
 
 export default FetchData;
+<<<<<<< HEAD
 
 
 // import React, { useEffect, useState } from 'react';
@@ -158,3 +189,5 @@ export default FetchData;
 // }
 
 // export default FetchData;
+=======
+>>>>>>> 2b05f18eaa6f7657362f0625f5e1cd8415e5622e
