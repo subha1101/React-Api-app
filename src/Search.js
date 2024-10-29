@@ -17,3 +17,4 @@ const Search = ({ searchVal, handleSearch }) => {
 }
 
 export default Search;
+c
